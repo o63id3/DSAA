@@ -1,4 +1,6 @@
 public static int selection(int[] arr, int k) {
+        if (arr.length < k || k < 0 || arr.length == 0) return -1;
+
         int max = arr[0];
         for (int i = 1; i < arr.length; i++) if (arr[i] > max) max = arr[i];
 
