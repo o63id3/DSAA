@@ -1,0 +1,20 @@
+public static boolean checkBalancedParenthesis(String parenthesis) {
+        if (parenthesis.isEmpty()) return false;
+
+        Stack<Character> leftParenthesis = new Stack<>();
+        for (int i = 0; i < parenthesis.length(); i++) {
+            char now = parenthesis.charAt(i);
+            if (now == '{' || now == '[' || now == '(') leftParenthesis.push(now);
+            else {
+                if (leftParenthesis.isEmpty()) return false;
+
+                char shouldBe = leftParenthesis.peek();
+                if (shouldBe == '{' && now != '}') return false;
+                else if (shouldBe == '[' && now != ']') return false;
+                else if (shouldBe == '(' && now != ')') return false;
+                leftParenthesis.pop();
+            }
+        }
+
+        return true && leftParenthesis.isEmpty();
+    }
